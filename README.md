@@ -3,10 +3,10 @@
 (Requires Docker 1.9+)
 
 The docker hub for this repo can be found at
-https://hub.docker.com/r/tritlo/mumble/
+https://hub.docker.com/r/tritlo/murmur/
 
 The github repo for this service can be found at 
-https://github.com/Tritlo/DockerizedMumble/tree/master
+https://github.com/Tritlo/DockerizedMurmur/tree/master
 
 For reference on config of murmur, see http://wiki.mumble.info/wiki/Murmur.ini
 
