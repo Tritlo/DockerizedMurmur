@@ -1,4 +1,4 @@
-FROM busybox
+FROM busybox:ubuntu
 
 ARG VERSION=1.2.10
 ADD https://github.com/mumble-voip/mumble/releases/download/${VERSION}/murmur-static_x86-${VERSION}.tar.bz2 /build/
@@ -17,6 +17,7 @@ COPY ./murmur.ini /etc/murmur.ini
 VOLUME /root
 
 EXPOSE 64738
-CMD mkdir -p /root/murmur &&\
-    cp /etc/murmur.ini /root/murmur/murmur.ini &&\
+CMD mkdir -p /root/murmur ;\
+    test ! -e /root/murmur/murmur.ini &&\
+    cp /etc/murmur.ini /root/murmur/murmur.ini;\
     /bin/murmur -ini /root/murmur/murmur.ini -fg
