@@ -2,11 +2,11 @@
 
 This defines a dockerized mumble server. To run it, simply build it with
     
-    docker build --rm -t mpgis/mumble .
+    docker build --rm -t tritlo/mumble .
 
 and run with
 
-    docker run -d --name mumble -p 64738:64738 -v $PWD/murmur/:/root/murmur/ mpgis/mumble
+    docker run -d --name mumble -p 64738:64738 -v $PWD/murmur/:/root/murmur/ tritlo/mumble
 
 The default password is "mumble".
 
