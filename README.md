@@ -1,6 +1,12 @@
 # Dockerized mumble
 
-This defines a dockerized mumble server. To run it, simply build it with
+The docker hub for this repo can be found at
+https://hub.docker.com/r/tritlo/mumble/
+
+The github repo for this service can be found at 
+https://github.com/Tritlo/DockerizedMumble/tree/master
+
+This repo defines a dockerized mumble server. To run it, simply build it with
     
     docker build --rm -t tritlo/mumble .
 
