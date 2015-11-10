@@ -1,4 +1,6 @@
-# Dockerized mumble
+# Dockerized murmur (mumble server)
+
+(Requires Docker 1.9+)
 
 The docker hub for this repo can be found at
 https://hub.docker.com/r/tritlo/mumble/
@@ -6,18 +8,45 @@ https://hub.docker.com/r/tritlo/mumble/
 The github repo for this service can be found at 
 https://github.com/Tritlo/DockerizedMumble/tree/master
 
-This repo defines a dockerized mumble server. To run it, simply build it with
+For reference on config of murmur, see http://wiki.mumble.info/wiki/Murmur.ini
+
+This repo is on docker hub, so to run it, you can simply use
+
+    docker run -d --name murmur -p=64738:64738 -p=64738:64738/udp -v /mnt/murmur/:/root/murmur/ tritlo/murmur
+
+You can then go to the mount point (/mnt/murmur/ in the above) and change
+murmur.ini to set the settings. To then update the config on the server,
+run
+
+    docker murmur restart
+
+To build it locally, pull this repo and use:
     
-    docker build --rm -t tritlo/mumble .
+    docker build --rm -t tritlo/murmur .
 
-and run with
+## Password
 
-    docker run -d --name mumble -p=64738:64738 -p=64738:64738/udp -v $PWD/murmur/:/root/murmur/ tritlo/mumble
+The default password is "mumble", change this by updating
 
-The default password is "mumble".
+    serverpassword=mumble
 
-You can use another directory than $PWD for the mount if you want. You should then be able to change the config in the mount, and run
+in murmur.ini, and then
 
-    docker restart mumble
+    docker murmur restart
 
-To update the config on the server.
+
+## Custom ssl
+
+To use your own ssl certificate instead of having murmur autogenerate one,
+update
+
+    #sslCert=
+    #sslKey=
+
+in murmur.ini into something like
+
+    sslCert=/root/murmur/ssl/fullchain.pem
+    sslKey=/root/murmur/ssl/privkey.pem
+
+and then place your keys into /mnt/murmur/ssl,
+or wherever your mount point is.
