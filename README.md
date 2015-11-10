@@ -30,10 +30,9 @@ The default password is "mumble", change this by updating
 
     serverpassword=mumble
 
-in murmur.ini, and then
+in murmur.ini (at the mount point), and then run
 
     docker murmur restart
-
 
 ## Custom ssl
 
@@ -43,10 +42,16 @@ update
     #sslCert=
     #sslKey=
 
-in murmur.ini into something like
+in murmur.ini (at the mount point) into something like
 
     sslCert=/root/murmur/ssl/fullchain.pem
     sslKey=/root/murmur/ssl/privkey.pem
 
 and then place your keys into /mnt/murmur/ssl,
 or wherever your mount point is.
+
+Then run 
+
+    docker murmur restart
+
+to update the server.
