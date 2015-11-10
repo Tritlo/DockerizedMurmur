@@ -24,9 +24,23 @@ To build it locally, pull this repo and use:
     
     docker build --rm -t tritlo/murmur .
 
-## Password
+## SuperUser password
 
-The default password is "mumble", change this by updating
+When the images is first launched, a generated SuperUser password is
+generated, and can be found in the logs. These are viewed with
+
+    docker logs murmur
+
+To set the SuperUser password, you can run
+
+    docker run -it --rm -v /mnt/murmur/:/root/murmur/ tritlo/murmur /bin/murmur -readsupw
+
+Where /mnt/murmur/ is your mount point. You will then be prompted to enter a
+password, which will then be set as your SuperUser password.
+
+## Server password
+
+The default server password is "mumble", change this by updating
 
     serverpassword=mumble
 
@@ -34,9 +48,9 @@ in murmur.ini (at the mount point), and then run
 
     docker murmur restart
 
-## Custom ssl
+## Custom SSL
 
-To use your own ssl certificate instead of having murmur autogenerate one,
+To use your own SSL certificate instead of having murmur autogenerate one,
 update
 
     #sslCert=
