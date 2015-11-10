@@ -12,7 +12,7 @@ This repo defines a dockerized mumble server. To run it, simply build it with
 
 and run with
 
-    docker run -d --name mumble -p 64738:64738 -v $PWD/murmur/:/root/murmur/ tritlo/mumble
+    docker run -d --name mumble -p=64738:64738 -p=64738:64738/udp -v $PWD/murmur/:/root/murmur/ tritlo/mumble
 
 The default password is "mumble".
 
