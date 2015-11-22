@@ -1,6 +1,6 @@
 FROM busybox:ubuntu
 
-ARG VERSION=1.2.10
+ENV VERSION=1.2.10
 ADD https://github.com/mumble-voip/mumble/releases/download/${VERSION}/murmur-static_x86-${VERSION}.tar.bz2 /build/
 
 RUN cd /build &&\
